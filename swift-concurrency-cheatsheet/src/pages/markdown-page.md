@@ -5,9 +5,17 @@ description: My document description
 slug: /my-custom-url
 ---
 
-# Markdown page example
+# Interactions between contexts
 
-You don't need React to write simple standalone pages.
+These are the interactions between the swift contexts. 
+
+
+
+| Caller / Callee | Main Actor | Actor    | Non Isolated |
+|----------------|------------|----------|--------------|
+| **Main Actor** | Call freely | Call 'init' sync.<br/> Others are called async   | Call freely       |
+| **Actor**      | Called only async  | Call 'init' sync.<br/> Others are called async | Call freely         |
+| **Non Isolated** | Called only async    | Call 'init' sync.<br/> Others are called async      | Call freely    |
 
 
 <!-- Markdown text with [links](./hello.md) -->
