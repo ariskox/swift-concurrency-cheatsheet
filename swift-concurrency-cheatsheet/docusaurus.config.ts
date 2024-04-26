@@ -127,7 +127,7 @@ const config: Config = {
         },
       ],
       */
-      copyright: `Copyright © ${new Date().getFullYear()} Koxaras Aris L.P. Built with Docusaurus. Made with ❤️ in Karditsa`,
+      copyright: `Copyright © ${new Date().getFullYear()} Koxaras Aris L.P. <br>Built with <a href="https://docusaurus.io" target="_blank">Docusaurus</a><br>Made with ❤️ in Karditsa`,
     },
     prism: {
       theme: prismThemes.github,
