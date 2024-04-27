@@ -1,31 +1,51 @@
 ---
-id: my-doc-id
+id: interactions
 title: Interactions
 description: Interactions between contexts
-slug: /my-custom-url
 sidebar_position: 2
 ---
 
 # Interactions between contexts
 
-These are the interactions between the swift contexts. 
+<!--And some <Highlight>custom markup</Highlight>...-->
 
+These are the interactions between the swift contexts.
 
-| Caller / Callee | Main Actor | Actor    | Non Isolated |
-|----------------|------------|----------|--------------|
-| **Main Actor** | :white_check_mark: Call freely | :white_check_mark: Initializer <br/> ⏰️ Asynchronously for the rest of methods | :white_check_mark: Call freely      |
-| **Actor**      | ⏰️ Asynchronously  | :white_check_mark: Initializer <br/> ⏰️ Asynchronously for the rest of methods | :white_check_mark:  Call freely       |
-| **Non Isolated** | ⏰️ Asynchronously | :white_check_mark: Initializer <br/> ⏰️ Asynchronously for the rest of methods     | :white_check_mark: Call freely   |
+| Caller / Callee  | Main Actor                     | Actor                                                                                        | Non Isolated                   |
+| ---------------- | ------------------------------ | -------------------------------------------------------------------------------------------- | ------------------------------ |
+| **Main Actor**   | :white_check_mark: Call freely | :white_check_mark: Initializer: Call freely <br/> ⏰️ Asynchronously for the rest of methods | :white_check_mark: Call freely |
+| **Actor**        | ⏰️ Asynchronously             | :white_check_mark: Initializer: Call freely <br/> ⏰️ Asynchronously for the rest of methods | :white_check_mark: Call freely |
+| **Non Isolated** | ⏰️ Asynchronously             | :white_check_mark: Initializer: Call freely <br/> ⏰️ Asynchronously for the rest of methods | :white_check_mark: Call freely |
 
+<br/>
+<br/>
 
-:::tip[My tip]
+```mermaid
+graph LR;
+    Actor.init((Actor initializer))-- Async -->Actor.method;
+    Actor.init-- Async -->MainActor;
+    Actor.init-->Actor.init;
+    Actor.init-->nonisolated((Non Isolated));
 
-Use this awesome feature option
+    Actor.method(((Actor method)))-- Async -->MainActor;
+    Actor.method-->Actor.init;
+    Actor.method-- Async -->Actor.method;
+    Actor.method-->nonisolated;
 
-:::
+    MainActor(((Main actor)))-->MainActor;
+    MainActor-->Actor.init;
+    MainActor-- Async -->Actor.method;
+    MainActor-->nonisolated;
 
-:::danger[Take care]
+    nonisolated-- Async -->MainActor;
+    nonisolated-->Actor.init;
+    nonisolated-- Async -->Actor.method;
+    nonisolated-->nonisolated;
 
-This action is dangerous
+```
 
+<br/>
+
+:::tip[Async calling]
+To use 'async', the caller should be on an asynchronous context (e.g. async method, initializer, variable)
 :::
