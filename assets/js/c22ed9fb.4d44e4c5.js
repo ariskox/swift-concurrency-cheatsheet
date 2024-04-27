@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkswift_concurrency_cheatsheet=self.webpackChunkswift_concurrency_cheatsheet||[]).push([[5446],{3967:(e,c,s)=>{s.r(c),s.d(c,{default:()=>n});s(6540);var t=s(8244),h=s(4848);function n(){return(0,h.jsxs)(t.A,{children:[(0,h.jsx)("h1",{children:"My React page"}),(0,h.jsx)("p",{children:"This is a React page"})]})}}}]);
