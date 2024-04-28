@@ -4,8 +4,8 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "Swift Concurrency Cheatsheet",
-  tagline: "One stop shop for all things Swift Concurrency",
-  favicon: "img/favicon.ico",
+  tagline: "Code in Sync, Run at Speed",
+  favicon: "favicon/favicon.ico",
 
   // Set the production url of your site here
   url: "https://www.swiftconcurrencycheatsheet.com/",
@@ -32,9 +32,10 @@ const config: Config = {
     [
       "classic",
       {
+        // docs: false;
         docs: {
           sidebarPath: "./sidebars.ts",
-          // hideTableOfContents: true,
+          // exclude: ["**/tutorial-basics"],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           //editUrl:
@@ -67,19 +68,19 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     // Replace with your project's social card
-    image: "img/docusaurus-social-card.jpg",
+    // image: "img/docusaurus-social-card.jpg",
     navbar: {
       title: "Swift Concurrency",
       logo: {
         alt: "Swift Concurrency Logo",
-        src: "img/logo.svg",
+        src: "img/sccs-logo.png",
       },
       items: [
         {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
-          label: "CheatSheet",
+          label: "Documents",
         },
         /*{to: '/blog', label: 'Blog', position: 'left'},*/
         /*{

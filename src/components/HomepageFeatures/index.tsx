@@ -1,11 +1,25 @@
 import clsx from "clsx";
 import Heading from "@theme/Heading";
 import styles from "./styles.module.css";
+import React from "react";
+import ReactMarkdown from "react-markdown";
+
+const MyMarkdownComponent = () => {
+  const markdown = `
+  ## Heading
+  Here is some Markdown content.
+  - List item 1
+  - List item 2
+  `;
+
+  return <ReactMarkdown>{markdown}</ReactMarkdown>;
+};
 
 type FeatureItem = {
   title: string;
   Svg: React.ComponentType<React.ComponentProps<"svg">>;
   description: JSX.Element;
+  markdown: string;
 };
 
 const FeatureList: FeatureItem[] = [
@@ -18,6 +32,7 @@ const FeatureList: FeatureItem[] = [
         used to get your website up and running quickly.
       </>
     ),
+    markdown: "",
   },
   {
     title: "Focus on What Matters",
@@ -28,6 +43,7 @@ const FeatureList: FeatureItem[] = [
         ahead and move your docs into the <code>docs</code> directory.
       </>
     ),
+    markdown: "",
   },
   {
     title: "Powered by React",
@@ -38,10 +54,11 @@ const FeatureList: FeatureItem[] = [
         be extended while reusing the same header and footer.
       </>
     ),
+    markdown: "**markdown**",
   },
 ];
 
-function Feature({ title, Svg, description }: FeatureItem) {
+function Feature({ title, Svg, description, markdown }: FeatureItem) {
   return (
     <div className={clsx("col col--4")}>
       <div className="text--center">
@@ -50,6 +67,17 @@ function Feature({ title, Svg, description }: FeatureItem) {
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
+        <ReactMarkdown>{markdown}</ReactMarkdown>
+      </div>
+    </div>
+  );
+}
+
+function underConstruction() {
+  return (
+    <div className={clsx("col col--12")}>
+      <div className="text--center padding-horiz--md">
+        <Heading as="h3">Under Construction</Heading>
       </div>
     </div>
   );
@@ -60,9 +88,12 @@ export default function HomepageFeatures(): JSX.Element {
     <section className={styles.features}>
       <div className="container">
         <div className="row">
-          {FeatureList.map((props, idx) => (
+          {
+            /* FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
-          ))}
+          ))  */
+            underConstruction()
+          }
         </div>
       </div>
     </section>
